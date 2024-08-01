@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PostController;
 use App\Models\Post;
 use Illuminate\Support\Facades\Route;
 
@@ -16,20 +17,7 @@ Route::get('/about', function () {
         "image" => "1.jpg"
     ]);
 });
-
-
-
-Route::get('/blog', function () {
-    return view('posts', [
-        'title' => 'Posts',
-        'posts' => Post::all()
-    ]);
-});
+Route::get('/blog', [PostController::class, 'index']);
 
 // halaman single post
-Route::get('posts/{slug}', function($slug) {
-   return view('post', [
-    'title' => 'Single Post',
-    'post' => Post::find($slug)
-   ]);
-});
+Route::get('posts/{slug}', [PostController::class, 'show']);

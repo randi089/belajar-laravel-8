@@ -13,6 +13,7 @@ class PostSeeder extends Seeder
     public function run(): void
     {
         Post::create([
+            'category_id' => 1,
             'title' => 'Judul Pertama',
             'slug' => 'judul-pertama',
             'excerpt' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Id at distinctio accusamus ut culpa, libero consequuntur tenetur eius quibusdam nesciunt, nihil obcaecati animi magni sequi soluta enim nam voluptas cupiditate dolorem rerum reiciendis?',
@@ -20,6 +21,7 @@ class PostSeeder extends Seeder
         ]);
 
         Post::create([
+            'category_id' => 2,
             'title' => 'Judul Kedua',
             'slug' => 'judul-kedua',
             'excerpt' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Id at distinctio accusamus ut culpa, libero consequuntur tenetur eius quibusdam nesciunt, nihil obcaecati animi magni sequi soluta enim nam voluptas cupiditate dolorem rerum reiciendis?',
@@ -27,6 +29,7 @@ class PostSeeder extends Seeder
         ]);
 
         Post::create([
+            'category_id' => 3,
             'title' => 'Judul Ketiga',
             'slug' => 'judul-ketiga',
             'excerpt' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Id at distinctio accusamus ut culpa, libero consequuntur tenetur eius quibusdam nesciunt, nihil obcaecati animi magni sequi soluta enim nam voluptas cupiditate dolorem rerum reiciendis?',

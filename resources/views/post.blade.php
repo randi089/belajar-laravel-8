@@ -5,9 +5,9 @@
 
 <article>
     <h2>{{ $post->title }}</h2>
-    <p>By. Randi Febriadi in <a href="/categories/{{ $post->category->slug }}">{{ $post->category->name }}</a></p>
+    <p class="text-muted">By. <a href="#">{{ $post->user->name }}</a> in <a href="/categories/{{ $post->category->slug }}">{{ $post->category->name }}</a></p>
     {!! $post->body !!}
 </article>
 
-<a href="/blog">Back to Posts &laquo;</a>
+<a href="/blog">&laquo; Back to Posts</a>
 @endsection

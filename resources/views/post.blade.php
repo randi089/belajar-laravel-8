@@ -1,13 +1,21 @@
 @extends('layouts.main')
 
 @section('container')
-<h1 class="mb-5">Halaman Post</h1>
+    <div class="container mb-3">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <h1>{{ $post->title }}</h1>
+                <p class="text-muted">By. <a href="/authors/{{ $post->author->username }}">{{ $post->author->name }}</a> in <a
+                        href="/categories/{{ $post->category->slug }}">{{ $post->category->name }}</a></p>
+                <img src="../img/post/{{ $post->category->slug }}.jpg" alt="{{ $post->category->name }}"
+                    class="img-fluid full">
 
-<article>
-    <h2>{{ $post->title }}</h2>
-    <p class="text-muted">By. <a href="/authors/{{ $post->author->username }}">{{ $post->author->name }}</a> in <a href="/categories/{{ $post->category->slug }}">{{ $post->category->name }}</a></p>
-    {!! $post->body !!}
-</article>
+                <article class="my-3 fs-5">
+                    {!! $post->body !!}
+                </article>
 
-<a href="/blog">&laquo; Back to Posts</a>
+                <a href="/blog">&laquo; Back to Posts</a>
+            </div>
+        </div>
+    </div>
 @endsection

@@ -1,3 +1,23 @@
 a {
     text-decoration: none;
 }
+
+.height {
+    max-height: 400px;
+}
+
+.bg-transp {
+    background-color: rgba(0, 0, 0, .7);
+    border-radius: 0 0 8px 0;
+}
+
+.full {
+    display: block;
+    width: 100%;
+    max-height: 400px;
+    border-radius: 5px;
+}
+
+.none {
+    border-radius: unset;
+}

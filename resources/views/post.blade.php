@@ -5,8 +5,8 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <h1>{{ $post->title }}</h1>
-                <p class="text-muted">By. <a href="/authors/{{ $post->author->username }}">{{ $post->author->name }}</a> in <a
-                        href="/categories/{{ $post->category->slug }}">{{ $post->category->name }}</a></p>
+                <p class="text-muted">By. <a href="/posts?author={{ $post->author->username }}">{{ $post->author->name }}</a>
+                    in <a href="/posts?category={{ $post->category->slug }}">{{ $post->category->name }}</a></p>
                 <img src="../img/post/{{ $post->category->slug }}.jpg" alt="{{ $post->category->name }}"
                     class="img-fluid full">
 
@@ -14,7 +14,7 @@
                     {!! $post->body !!}
                 </article>
 
-                <a href="/blog">&laquo; Back to Posts</a>
+                <a href="/posts">&laquo; Back to Posts</a>
             </div>
         </div>
     </div>

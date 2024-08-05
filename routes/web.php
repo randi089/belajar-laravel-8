@@ -20,7 +20,7 @@ Route::get('/about', function () {
         "image" => "1.jpg"
     ]);
 });
-Route::get('/blog', [PostController::class, 'index']);
+Route::get('/posts', [PostController::class, 'index']);
 
 // halaman single post
 Route::get('/posts/{post:slug}', [PostController::class, 'show']);

@@ -1,9 +1,11 @@
 <?php
 
-use App\Http\Controllers\PostController;
-use App\Models\Category;
 use App\Models\User;
+use App\Models\Category;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PostController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RegisterController;
 
 Route::get('/', function () {
     return view('home', [
@@ -35,3 +37,9 @@ Route::get('/list', function() {
         'authors' => User::all()
     ]);
 });
+
+// Login
+Route::get('/login', [LoginController::class, 'index']);
+
+// Register
+Route::get('/register', [RegisterController::class, 'index']);

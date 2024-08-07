@@ -13,6 +13,8 @@ class Post extends Model
     use HasFactory, Sluggable;
     protected $with = ['category', 'author'];
 
+    protected $guarded = ['id'];
+
     public function scopeFilter(Builder $query, array $filters){
         $query->when($filters['search'] ?? false, function($query, $search) {
             return $query->where('title', 'like', '%'.$search.'%')->orWhere('body', 'like', '%'.$search.'%');

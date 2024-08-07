@@ -51,3 +51,7 @@ a {
     border-radius: 0;
     margin-bottom: -1px;
   }
+
+  trix-toolbar [data-trix-button-group="file-tools"] {
+    display: none;
+  }

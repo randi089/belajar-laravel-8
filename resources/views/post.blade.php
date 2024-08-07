@@ -7,8 +7,7 @@
                 <h1>{{ $post->title }}</h1>
                 <p class="text-muted">By. <a href="/posts?author={{ $post->author->username }}">{{ $post->author->name }}</a>
                     in <a href="/posts?category={{ $post->category->slug }}">{{ $post->category->name }}</a></p>
-                <img src="../img/post/{{ $post->category->slug }}.jpg" alt="{{ $post->category->name }}"
-                    class="img-fluid full">
+                <img src="img/post/{{ $post->category->slug }}.jpg" alt="{{ $post->category->name }}" class="img-fluid full">
 
                 <article class="my-3 fs-5">
                     {!! $post->body !!}

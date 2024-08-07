@@ -19,7 +19,7 @@
             <div class="col-md-4">
                 <a href="/posts?category={{ $category->slug }}">
                     <div class="card bg-dark text-white">
-                        <img src="../img/post/{{ $category->slug }}.jpg" class="card-img" alt="{{ $category->name }}">
+                        <img src="img/post/{{ $category->slug }}.jpg" class="card-img" alt="{{ $category->name }}">
                         <div class="card-img-overlay d-flex align-items-center p-0">
                             <h5 class="card-title flex-fill bg-transp none p-4 text-center text-white fs-3">
                                 {{ $category->name }}</h5>

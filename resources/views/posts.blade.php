@@ -22,7 +22,7 @@
 
     @if ($posts->count())
         <div class="card mb-3">
-            <img src="../img/post/{{ $posts[0]->category->slug }}.jpg" class="card-img-top height"
+            <img src="img/post/{{ $posts[0]->category->slug }}.jpg" class="card-img-top height"
                 alt="{{ $posts[0]->category->name }}">
             <div class="card-body text-center">
                 <h3 class="card-title"><a href="/posts/{{ $posts[0]->slug }}" class="text-dark">{{ $posts[0]->title }}</a>
@@ -44,7 +44,7 @@
                                 <a href="/posts?category={{ $post->category->slug }}"
                                     class="text-white">{{ $post->category->name }}</a>
                             </div>
-                            <img src="../img/post/{{ $post->category->slug }}.jpg" class="card-img-top"
+                            <img src="img/post/{{ $post->category->slug }}.jpg" class="card-img-top"
                                 alt="{{ $post->category->name }}">
                             <div class="card-body d-flex flex-column justify-content-between align-items-start">
                                 <h3 class="card-title"><a href="/posts/{{ $post->slug }}"

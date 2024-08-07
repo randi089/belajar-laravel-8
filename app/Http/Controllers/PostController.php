@@ -23,7 +23,6 @@ class PostController extends Controller
         }
         return view('posts', [
             'title' => 'All Posts'.$title,
-            'active' => 'posts',
             'posts' => Post::latest()->filter(request(['search', 'category', 'author']))->paginate(7)->withQueryString()
         ]);
     }
@@ -32,7 +31,6 @@ class PostController extends Controller
     {
         return view('post', [
             'title' => 'Single Post',
-            'active' => 'posts',
             'post' => $post
            ]);
     }

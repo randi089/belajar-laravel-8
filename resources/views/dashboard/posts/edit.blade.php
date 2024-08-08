@@ -6,12 +6,13 @@
     </div>
 
     <div class="col-lg-8 mb-5">
-        <form method="post" action="/dashboard/posts">
+        <form method="post" action="/dashboard/posts/{{ $post->slug }}">
+            @method('put')
             @csrf
             <div class="mb-3">
                 <label for="title" class="form-label">Title</label>
                 <input type="text" class="form-control @error('title') is-invalid @enderror" id="title" name="title"
-                    value="{{ old('title') }}" autofocus required>
+                    value="{{ old('title', $post->title) }}" autofocus required>
                 @error('title')
                     <div class="invalid-feedback">
                         {{ $message }}
@@ -21,7 +22,7 @@
             <div class="mb-3">
                 <label for="slug" class="form-label">Slug</label>
                 <input type="text" class="form-control @error('slug') is-invalid @enderror" id="slug" name="slug"
-                    value="{{ old('slug') }}" required>
+                    value="{{ old('slug', $post->slug) }}" required>
                 @error('slug')
                     <div class="invalid-feedback">
                         {{ $message }}
@@ -32,7 +33,7 @@
                 <label for="category" class="form-label">Category</label>
                 <select class="form-select" name="category" id="category">
                     @foreach ($categories as $category)
-                        @if (old('category') == $category->id)
+                        @if (old('category', $post->category->id) == $category->id)
                             <option value="{{ $category->id }}" selected>{{ $category->name }}</option>
                         @else
                             <option value="{{ $category->id }}">{{ $category->name }}</option>
@@ -45,10 +46,10 @@
                 @error('body')
                     <p class="text-danger">{{ $message }}</p>
                 @enderror
-                <input id="body" type="hidden" name="body" value="{{ old('body') }}">
+                <input id="body" type="hidden" name="body" value="{{ old('body', $post->body) }}">
                 <trix-editor input="body"></trix-editor>
             </div>
-            <button type="submit" class="btn btn-primary">Create Post</button>
+            <button type="submit" class="btn btn-primary">Update Post</button>
         </form>
     </div>
 @endsection

@@ -10,6 +10,11 @@
             {{ session('success') }}
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
+    @elseif (session()->has('delete'))
+        <div class="alert alert-danger alert-dismissible fade show col-lg-8" role="alert">
+            {{ session('delete') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
     @endif
 
     <div class="table-responsive col-lg-8">
@@ -32,10 +37,14 @@
                         <td>
                             <a href="/dashboard/posts/{{ $post->slug }}" class="badge bg-info"><span
                                     data-feather="eye"></span></a>
-                            <a href="/dashboard/posts/{{ $post->id }}" class="badge bg-warning"><span
+                            <a href="/dashboard/posts/{{ $post->slug }}/edit" class="badge bg-warning"><span
                                     data-feather="edit"></span></a>
-                            <a href="/dashboard/posts/{{ $post->id }}" class="badge bg-danger"><span
-                                    data-feather="trash-2"></span></a>
+                            <form action="/dashboard/posts/{{ $post->slug }}" method="post" class="d-inline-block">
+                                @method('delete')
+                                @csrf
+                                <button type="submit" class="border-0 badge bg-danger"
+                                    onclick="return confirm('Are you sure?')"><span data-feather="trash-2"></span></button>
+                            </form>
                         </td>
                     </tr>
                 @endforeach

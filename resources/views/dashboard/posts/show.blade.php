@@ -4,12 +4,18 @@
     <div class="container my-3">
         <div class="row">
             <div class="col-lg-8">
-                <h1>{{ $post->title }}</h1>
+                <h1 class="mb-2">{{ $post->title }}</h1>
 
-                <a href="/dashboard/posts" class="btn btn-primary mt-2"><span data-feather="arrow-left"></span> Back to all my
+                <a href="/dashboard/posts" class="btn btn-primary"><span data-feather="arrow-left"></span> Back to all my
                     posts</a>
-                <a href="" class="btn btn-warning"><span data-feather="edit"></span> Edit</a>
-                <a href="" class="btn btn-danger"><span data-feather="trash-2"></span> Delete</a>
+                <a href="/dashboard/posts/{{ $post->slug }}/edit" class="btn btn-warning"><span data-feather="edit"></span>
+                    Edit</a>
+                <form action="/dashboard/posts/{{ $post->slug }}" method="post" class="d-inline-block">
+                    @method('delete')
+                    @csrf
+                    <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure?')"><span
+                            data-feather="trash-2"></span> Delete</button>
+                </form>
 
                 <img src="/img/post/{{ $post->category->slug }}.jpg" alt="{{ $post->category->name }}"
                     class="img-fluid full mt-3">

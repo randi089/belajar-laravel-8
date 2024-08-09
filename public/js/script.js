@@ -1,10 +1,17 @@
 // slug otomatis
 const title = document.getElementById('title');
+const nama = document.getElementById('name');
 const slug =document.getElementById('slug');
 
 if (title) {
     title.addEventListener('change', function() {
         fetch('/dashboard/posts/checkSlug?title=' + title.value)
+        .then(response => response.json())
+        .then(data => slug.value = data.slug);
+    });
+} else if (nama) {
+    nama.addEventListener('change', function() {
+        fetch('/dashboard/categories/checkSlug?name=' + nama.value)
         .then(response => response.json())
         .then(data => slug.value = data.slug);
     });

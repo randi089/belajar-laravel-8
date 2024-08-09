@@ -17,8 +17,15 @@
                             data-feather="trash-2"></span> Delete</button>
                 </form>
 
-                <img src="/img/post/{{ $post->category->slug }}.jpg" alt="{{ $post->category->name }}"
-                    class="img-fluid full mt-3">
+                @if ($post->image)
+                    <div class="height">
+                        <img src="{{ asset('storage/' . $post->image) }}" alt="{{ $post->category->name }}"
+                            class="img-fluid full mt-3">
+                    </div>
+                @else
+                    <img src="/img/post/{{ $post->category->slug }}.jpg" alt="{{ $post->category->name }}"
+                        class="img-fluid full mt-3">
+                @endif
 
                 <article class="my-3 fs-5">
                     {!! $post->body !!}

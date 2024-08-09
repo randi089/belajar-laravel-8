@@ -7,7 +7,15 @@
                 <h1>{{ $post->title }}</h1>
                 <p class="text-muted">By. <a href="/posts?author={{ $post->author->username }}">{{ $post->author->name }}</a>
                     in <a href="/posts?category={{ $post->category->slug }}">{{ $post->category->name }}</a></p>
-                <img src="/img/post/{{ $post->category->slug }}.jpg" alt="{{ $post->category->name }}" class="img-fluid full">
+                @if ($post->image)
+                    <div class="height">
+                        <img src="{{ asset('storage/' . $post->image) }}" alt="{{ $post->category->name }}"
+                            class="img-fluid full">
+                    </div>
+                @else
+                    <img src="/img/post/{{ $post->category->slug }}.jpg" alt="{{ $post->category->name }}"
+                        class="img-fluid full">
+                @endif
 
                 <article class="my-3 fs-5">
                     {!! $post->body !!}

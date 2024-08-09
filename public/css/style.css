@@ -4,6 +4,7 @@ a {
 
 .height {
     max-height: 400px;
+    overflow: hidden;
 }
 
 .bg-transp {

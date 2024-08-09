@@ -22,8 +22,15 @@
 
     @if ($posts->count())
         <div class="card mb-3">
-            <img src="img/post/{{ $posts[0]->category->slug }}.jpg" class="card-img-top height"
-                alt="{{ $posts[0]->category->name }}">
+            @if ($posts[0]->image)
+                <div class="height">
+                    <img src="{{ asset('storage/' . $posts[0]->image) }}" alt="{{ $posts[0]->category->name }}"
+                        class="card-img-top">
+                </div>
+            @else
+                <img src="/img/post/{{ $posts[0]->category->slug }}.jpg" alt="{{ $posts[0]->category->name }}"
+                    class="card-img-top">
+            @endif
             <div class="card-body text-center">
                 <h3 class="card-title"><a href="/posts/{{ $posts[0]->slug }}" class="text-dark">{{ $posts[0]->title }}</a>
                 </h3>
@@ -44,8 +51,13 @@
                                 <a href="/posts?category={{ $post->category->slug }}"
                                     class="text-white">{{ $post->category->name }}</a>
                             </div>
-                            <img src="img/post/{{ $post->category->slug }}.jpg" class="card-img-top"
-                                alt="{{ $post->category->name }}">
+                            @if ($post->image)
+                                <img src="{{ asset('storage/' . $post->image) }}" alt="{{ $post->category->name }}"
+                                    class="card-img-top">
+                            @else
+                                <img src="/img/post/{{ $post->category->slug }}.jpg" alt="{{ $post->category->name }}"
+                                    class="card-img-top">
+                            @endif
                             <div class="card-body d-flex flex-column justify-content-between align-items-start">
                                 <h3 class="card-title"><a href="/posts/{{ $post->slug }}"
                                         class="truncated">{{ $post->title }}</a></h3>

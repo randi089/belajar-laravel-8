@@ -29,7 +29,7 @@
                 </div>
             @else
                 <img src="/img/post/{{ $posts[0]->category->slug }}.jpg" alt="{{ $posts[0]->category->name }}"
-                    class="card-img-top">
+                    class="card-img-top height">
             @endif
             <div class="card-body text-center">
                 <h3 class="card-title"><a href="/posts/{{ $posts[0]->slug }}" class="text-dark">{{ $posts[0]->title }}</a>

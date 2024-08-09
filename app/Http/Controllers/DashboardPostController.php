@@ -7,6 +7,7 @@ use App\Models\Category;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Cviebrock\EloquentSluggable\Services\SlugService;
+use Illuminate\Support\Facades\Storage;
 
 class DashboardPostController extends Controller
 {
@@ -17,7 +18,7 @@ class DashboardPostController extends Controller
     {
         return view('dashboard.posts.index', [
             'title' => 'Posts',
-            'posts' => Post::where('user_id', auth()->user()->id)->get()
+            'posts' => Post::where('user_id', auth()->guard()->user()->id)->get()
         ]);
     }
 
@@ -49,7 +50,7 @@ class DashboardPostController extends Controller
         }
 
         $validatedData['category_id'] = $request->category;
-        $validatedData['user_id'] = auth()->user()->id;
+        $validatedData['user_id'] = auth()->guard()->user()->id;
         $validatedData['excerpt'] = Str::limit(strip_tags($request->body), 200);
 
         Post::create($validatedData);
@@ -87,7 +88,8 @@ class DashboardPostController extends Controller
     {
         $rules = [
             'title' => 'required|max:255',
-            'body' => 'required'
+            'image' => 'image|file|max:1024',
+            'body' => 'required',
         ];
 
         if ($request->slug != $post->slug) {
@@ -95,8 +97,15 @@ class DashboardPostController extends Controller
         }
 
         $validatedData = $request->validate($rules);
+
+        if ($request->file('image')) {
+            if ($request->oldImage) {
+                Storage::delete($request->oldImage);
+            }
+            $validatedData['image'] = $request->file('image')->store('post-images');
+        }
         $validatedData['category_id'] = $request->category;
-        $validatedData['user_id'] = auth()->user()->id;
+        $validatedData['user_id'] = auth()->guard()->user()->id;
         $validatedData['excerpt'] = Str::limit(strip_tags($request->body), 200);
 
         Post::where('id', $post->id)->update($validatedData);
@@ -108,6 +117,9 @@ class DashboardPostController extends Controller
      */
     public function destroy(Post $post)
     {
+        if ($post->image) {
+            Storage::delete($post->image);
+        }
         Post::destroy($post->id);
 
         return redirect('/dashboard/posts')->with('delete', 'Post has been deleted!');

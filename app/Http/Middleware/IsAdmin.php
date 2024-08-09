@@ -19,7 +19,7 @@ class IsAdmin
             return redirect('/login');
         }
 
-        if (auth()->guard()->user()->username != 'randi1') {
+        if (!auth()->guard()->user()->is_admin) {
             return redirect('/dashboard');
         }
         return $next($request);

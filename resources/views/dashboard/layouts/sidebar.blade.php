@@ -15,7 +15,7 @@
             </li>
         </ul>
 
-        @if (auth()->guard()->user()->username === 'randi1')
+        @can('admin')
             <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
                 <span>Administrator</span>
             </h6>
@@ -28,6 +28,6 @@
                     </a>
                 </li>
             </ul>
-        @endif
+        @endcan
     </div>
 </nav>

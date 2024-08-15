@@ -4,6 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    {{-- <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"> --}}
     <title>RanFeb | {{ $title }}</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/dashboard/">
@@ -19,8 +20,8 @@
     <script type="text/javascript" src="https://unpkg.com/trix@2.0.8/dist/trix.umd.min.js"></script>
 
     <!-- Custom styles for this template -->
-    <link href="/css/dashboard.css" rel="stylesheet">
-    <link href="/css/style.css" rel="stylesheet">
+    <link href="{{ asset("css/dashboard.css") }}" rel="stylesheet">
+    <link href="{{ asset("css/style.css") }}" rel="stylesheet">
 
 </head>
 
@@ -51,8 +52,8 @@
     </script>
 
     {{-- My Script --}}
-    <script src="/js/dashboard.js"></script>
-    <script src="/js/script.js"></script>
+    <script src="{{ asset("js/dashboard.js") }}"></script>
+    <script src="{{ asset("js/script.js") }}"></script>
 </body>
 
 </html>
